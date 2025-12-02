@@ -1,4 +1,4 @@
-package com.example.hr_api.repository
+package com.example.hr_api.repository;
 
 import com.example.hr_api.entity.OrganizationalUnit;
 import org.springframework.data.jpa.repository.JpaRepository;

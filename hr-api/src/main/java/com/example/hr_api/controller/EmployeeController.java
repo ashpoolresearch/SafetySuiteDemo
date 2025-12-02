@@ -2,8 +2,6 @@ package com.example.hr_api.controller;
 
 import com.example.hr_api.entity.Employee;
 import com.example.hr_api.service.EmployeeService;
-import com.example.hrapi.service.EmployeeService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-
-import sun.security.provider.certpath.ResponderId;
 
 @RestController
 @RequestMapping("/api/employees")
