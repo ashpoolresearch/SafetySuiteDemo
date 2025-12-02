@@ -1,27 +1,45 @@
 package com.example.hr_api.entity;
+
+import jakarta.persistence.*;
 import java.time.LocalDate;
 
-import jdk.vm.ci.meta.Local;
+@Entity
+@Table(name = "employees")
 public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false, unique = true)
     private String userId;
+
+    @Column(nullable = false)
     private String position;
+
+    @Column(nullable = false)
     private LocalDate dateOfBirth;
+
+    @ManyToOne
+    @JoinColumn(name = "organizational_unit_id")
     private OrganizationalUnit organizationalUnit;
 
     public Employee() {}
 
     public Employee(String firstName, String lastName, String userId, 
-    String position, LocalDate dateOfBirth) {
+                    String position, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userId = userId;
         this.position = position;
         this.dateOfBirth = dateOfBirth;
     }
-
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
