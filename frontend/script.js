@@ -247,63 +247,20 @@ function buildOrgHierarchy() {
 function renderOrgHierarchy(units, level = 0) {
     return units.map(unit => {
         const employeeCount = employees.filter(emp => emp.organizationalUnitId === unit.id).length;
-
+        
         let html = `
             <div class="org-unit level-${level}">
-                <div class="org-unit-header" onclick="toggleOrgUnitEmployees(${unit.id})">
-                    <div class="org-unit-name">${unit.description}</div>
-                    <div class="org-unit-info">${employeeCount} employee${employeeCount !== 1 ? 's' : ''} - Click to ${employeeCount > 0 ? 'view' : 'see details'}</div>
-                </div>
-                <div id="org-employees-${unit.id}" class="org-unit-employees"></div>
+                <div class="org-unit-name">${unit.description}</div>
+                <div class="org-unit-info">${employeeCount} employees</div>
             </div>
         `;
-
+        
         if (unit.children && unit.children.length > 0) {
             html += renderOrgHierarchy(unit.children, level + 1);
         }
-
+        
         return html;
     }).join('');
-}
-
-async function toggleOrgUnitEmployees(unitId) {
-    const container = document.getElementById(`org-employees-${unitId}`);
-
-    // If already expanded, collapse it
-    if (container.classList.contains('expanded')) {
-        container.classList.remove('expanded');
-        container.innerHTML = '';
-        return;
-    }
-
-    // Otherwise, load and display employees
-    try {
-        const unitEmployees = await apiRequest(`/employees/by-org-unit/${unitId}`);
-        displayOrgUnitEmployees(unitId, unitEmployees);
-    } catch (error) {
-        console.error('Failed to load employees for org unit:', error);
-        container.innerHTML = '<p style="padding: 10px; opacity: 0.7;">Failed to load employees.</p>';
-        container.classList.add('expanded');
-    }
-}
-
-function displayOrgUnitEmployees(unitId, employeeList) {
-    const container = document.getElementById(`org-employees-${unitId}`);
-
-    if (!employeeList || employeeList.length === 0) {
-        container.innerHTML = '<p style="padding: 10px; opacity: 0.7;">No employees in this unit.</p>';
-    } else {
-        container.innerHTML = employeeList.map(emp => `
-            <div class="org-employee-item">
-                <div class="org-employee-name">${emp.firstName} ${emp.lastName}</div>
-                <div class="org-employee-details">
-                    ${emp.position} | ${emp.userId}
-                </div>
-            </div>
-        `).join('');
-    }
-
-    container.classList.add('expanded');
 }
 
 // Form Handling
