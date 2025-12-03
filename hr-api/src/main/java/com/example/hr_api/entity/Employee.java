@@ -1,5 +1,6 @@
 package com.example.hr_api.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -28,6 +29,7 @@ public class Employee {
 
     @ManyToOne
     @JoinColumn(name = "organizational_unit_id")
+    @JsonIgnore
     private OrganizationalUnit organizationalUnit;
 
     public Employee() {}

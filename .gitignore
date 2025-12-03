@@ -1,1 +1,34 @@
 CLAUDE.md
+
+# Gradle
+.gradle/
+build/
+!gradle-wrapper.jar
+*.jar
+*.war
+*.ear
+
+# Java
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+.factorypath
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
