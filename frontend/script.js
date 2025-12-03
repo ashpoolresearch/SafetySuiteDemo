@@ -183,18 +183,18 @@ async function loadOrgUnits() {
     } catch (error) {
         console.error('Failed to load organizational units:', error);
         // Fallback for when org-units endpoint doesn't exist yet
-        orgUnits = [
-            { id: 1, description: 'Company', parentId: null },
-            { id: 2, description: 'Sales', parentId: 1 },
-            { id: 3, description: 'Engineering', parentId: 1 },
-            { id: 4, description: 'Human Resources', parentId: 1 },
-            { id: 5, description: 'Inside Sales', parentId: 2 },
-            { id: 6, description: 'Field Sales', parentId: 2 },
-            { id: 7, description: 'Backend', parentId: 3 },
-            { id: 8, description: 'Frontend', parentId: 3 },
-            { id: 9, description: 'Recruiting', parentId: 4 },
-            { id: 10, description: 'Payroll', parentId: 4 }
-        ];
+        // orgUnits = [
+        //     { id: 1, description: 'Company', parentId: null },
+        //     { id: 2, description: 'Sales', parentId: 1 },
+        //     { id: 3, description: 'Engineering', parentId: 1 },
+        //     { id: 4, description: 'Human Resources', parentId: 1 },
+        //     { id: 5, description: 'Inside Sales', parentId: 2 },
+        //     { id: 6, description: 'Field Sales', parentId: 2 },
+        //     { id: 7, description: 'Backend', parentId: 3 },
+        //     { id: 8, description: 'Frontend', parentId: 3 },
+        //     { id: 9, description: 'Recruiting', parentId: 4 },
+        //     { id: 10, description: 'Payroll', parentId: 4 }
+        // ];
         populateOrgUnitSelect();
         displayOrgUnits();
     }
